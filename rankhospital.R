@@ -14,15 +14,16 @@ rankhospital <- function(state, outcome, num = "best"){
                                      DfContinentWise[ ,1]), ]
   OrderedDfWithoutNa <- OrderedDf[!is.na(OrderedDf[ ,3]), ]
   if (num == "best"){
-  ## best <- which(as.numeric(OrderedDfWithoutNa[ ,3]) == 
-                    ## min(as.numeric(OrderedDfWithoutNa[ ,3]), na.rm = TRUE))
+  best <- which(as.numeric(OrderedDfWithoutNa[ ,3]) == 
+                    min(as.numeric(OrderedDfWithoutNa[ ,3]), na.rm = TRUE))
    ## OrderedDfWithoutNa[num, 1]
-   num <- 1
+   num <- best
   }else if (num == "worst"){
-    ## worst <- which(as.numeric(OrderedDfWithoutNa[ ,3]) == 
-                   ## max(as.numeric(OrderedDfWithoutNa[ ,3]), na.rm = TRUE))
+    worst <- which(as.numeric(OrderedDfWithoutNa[ ,3]) == 
+                   max(as.numeric(OrderedDfWithoutNa[ ,3]), na.rm = TRUE))
     ## OrderedDfWithoutNa[num, 1]
-    num <- nrow(OrderedDfWithoutNa)
+    ## num <- nrow(OrderedDfWithoutNa)
+    num <- worst
   }
   OrderedDfWithoutNa[num, 1]
 }
